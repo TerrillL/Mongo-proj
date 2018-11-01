@@ -13,10 +13,8 @@ const School = new mongoose.Schema({
 module.exports = mongoose.model('School', School)
 
 
-
-//.virtual('fullName')
+//Author
+//.virtual('name')
 //.get(function() {
-//    return ( location + '  ' + schoolName);
+//    return name
 //})
-//
-//module.exports = mongoose.model('', )
