@@ -10,10 +10,10 @@ router.get('/student', (req, res) => {
     let filters = req.query
     
     Student.find(filters)
-    .then(profiles => {
+    .then(students => {
         res.json({
             confirmation: 'success',
-            data: profiles
+            data: students
         })
     })
     .catch(err => {
@@ -27,14 +27,14 @@ router.get('/student', (req, res) => {
 // usually used as a put instead of get
 router.get('/student/update', (req, res) => {
     const query = req.query
-    const profileID = query.id
+    const studentID = query.id
     delete query['id']
     
-    Student.findByIdAndUpdate(profileID, query, {new:true})
-    .then(profile => {
+    Student.findByIdAndUpdate(studentID, query, {new:true})
+    .then(student => {
         res.json({
-            confirmation: 'sucess',
-            data: profile
+            confirmation: 'success',
+            data: student
         })
     })
     .catch(err => {
@@ -42,10 +42,6 @@ router.get('/student/update', (req, res) => {
             confirmation: 'fail',
             message: err.message
         })
-    })
-    res.json({
-        confirmation: 'success',
-        data: "this is the update endpoint"
     })
 })
 
@@ -66,20 +62,16 @@ router.get('/student/remove', (req, res) => {
             message: err.message
         })
     })
-    res.json({
-        confirmation: 'success',
-        data: "this is the update endpoint"
-    })
 })
 
 router.get('/student/:id', (req, res) => {
     const id = req.paraps.id
     
     Student.findById(id)
-    .then(profile => {
+    .then(student => {
         res.json({
         confirmation: 'success',
-        data: profile
+        data: student
         })
      }) 
     .catch(err => {
@@ -93,10 +85,10 @@ router.get('/student/:id', (req, res) => {
 router.post('/student', (req, res) => {
     
     Student.create(req.body)
-    .then(profile => {
+    .then(student => {
         res.json({
             confirmation: 'success',
-            data: profile
+            data: student
         })
     })
     .catch(err => {
@@ -110,11 +102,11 @@ router.post('/student', (req, res) => {
 router.get('/school', (req, res) => {
     let filters = req.query
     
-    Student.find(filters)
-    .then(profiles => {
+    School.find(filters)
+    .then(schools => {
         res.json({
             confirmation: 'success',
-            data: profiles
+            data: schools
         })
     })
     .catch(err => {
@@ -124,4 +116,80 @@ router.get('/school', (req, res) => {
         })
     })
 })
+
+// usually used as a put instead of get
+router.get('/school/update', (req, res) => {
+    const query = req.query
+    const schoolID = query.id
+    delete query['id']
+    
+    School.findByIdAndUpdate(schoolID, query, {new:true})
+    .then(school => {
+        res.json({
+            confirmation: 'success',
+            data: school
+        })
+    })
+    .catch(err => {
+        res.json({
+            confirmation: 'fail',
+            message: err.message
+        })
+    })
+})
+
+// usually used as a put instead of get
+router.get('/school/remove', (req, res) => {
+    const query = req.query
+    
+    School.findByIdAndRemove(query.id)
+    .then(data => {
+        res.json({
+            confirmation: 'success',
+            data: 'School ' + query.id + ' successfully removed'
+        })
+    })
+    .catch(err => {
+        res.json({
+            confirmation: 'fail',
+            message: err.message
+        })
+    })
+})
+
+router.get('/school/:id', (req, res) => {
+    const id = req.paraps.id
+    
+    School.findById(id)
+    .then(school => {
+        res.json({
+        confirmation: 'success',
+        data: school
+        })
+     }) 
+    .catch(err => {
+        res.json({
+            confirmation: 'fail',
+            message: 'School ' + id + ' not found.' 
+        })
+    })
+})
+
+router.post('/school', (req, res) => {
+    
+    School.create(req.body)
+    .then(school => {
+        res.json({
+            confirmation: 'success',
+            data: school
+        })
+    })
+    .catch(err => {
+        res.json({
+            confirmation: 'fail',
+            message: err.message
+        })
+    })
+})
+
 module.exports = router
