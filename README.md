@@ -1,3 +1,3 @@
-https://mongo-proj-4wvxaa.turbo360-vertex.com/api/student
+https://mongo-proj-u3f9zr.turbo360-vertex.com/
 
 npm i -g turbo-cli
