@@ -65,7 +65,7 @@ router.get('/student/remove', (req, res) => {
 })
 
 router.get('/student/:id', (req, res) => {
-    const id = req.paraps.id
+    const id = req.params.id
     
     Student.findById(id)
     .then(student => {
@@ -158,7 +158,7 @@ router.get('/school/remove', (req, res) => {
 })
 
 router.get('/school/:id', (req, res) => {
-    const id = req.paraps.id
+    const id = req.params.id
     
     School.findById(id)
     .then(school => {
