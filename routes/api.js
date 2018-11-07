@@ -24,7 +24,7 @@ router.get('/student', (req, res) => {
     })
 })
 
-// usually used as a put instead of get
+// usually used as a post instead of get
 router.get('/student/update', (req, res) => {
     const query = req.query
     const studentID = query.id
@@ -45,7 +45,7 @@ router.get('/student/update', (req, res) => {
     })
 })
 
-// usually used as a put instead of get
+// usually used as a post instead of get
 router.get('/student/remove', (req, res) => {
     const query = req.query
     
@@ -117,7 +117,7 @@ router.get('/school', (req, res) => {
     })
 })
 
-// usually used as a put instead of get
+// usually used as a post instead of get
 router.get('/school/update', (req, res) => {
     const query = req.query
     const schoolID = query.id
@@ -138,7 +138,7 @@ router.get('/school/update', (req, res) => {
     })
 })
 
-// usually used as a put instead of get
+// usually used as a post instead of get
 router.get('/school/remove', (req, res) => {
     const query = req.query
     
